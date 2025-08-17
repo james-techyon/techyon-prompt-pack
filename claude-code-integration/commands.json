@@ -1,0 +1,187 @@
+{
+  "commands": [
+    {
+      "name": "new-biz-pitch",
+      "description": "Launch comprehensive business idea validation workflow",
+      "version": "1.0.0",
+      "author": "James Techyon",
+      "aliases": ["nbp", "pitch", "validate", "idea"],
+      "subagent": "techyon-biz-launcher",
+      "category": "business",
+      "options": {
+        "quick": {
+          "description": "Run accelerated validation (stages 1-3 only)",
+          "type": "boolean",
+          "default": false
+        },
+        "full": {
+          "description": "Complete 12-stage process",
+          "type": "boolean",
+          "default": true
+        },
+        "investor": {
+          "description": "Focus on fundraising materials",
+          "type": "boolean",
+          "default": false
+        },
+        "b2b": {
+          "description": "Optimize for B2B business model",
+          "type": "boolean",
+          "default": false
+        },
+        "b2c": {
+          "description": "Optimize for consumer products",
+          "type": "boolean",
+          "default": false
+        },
+        "saas": {
+          "description": "SaaS-specific optimizations",
+          "type": "boolean",
+          "default": false
+        },
+        "hardware": {
+          "description": "Include hardware/manufacturing considerations",
+          "type": "boolean",
+          "default": false
+        },
+        "stage": {
+          "description": "Start from specific stage (1-12)",
+          "type": "number",
+          "default": 1,
+          "min": 1,
+          "max": 12
+        },
+        "output": {
+          "description": "Output directory for generated assets",
+          "type": "string",
+          "default": "./outputs"
+        }
+      },
+      "examples": [
+        {
+          "command": "/new-biz-pitch \"AI Meeting Assistant\" --quick",
+          "description": "Quick validation of a new AI product idea"
+        },
+        {
+          "command": "/new-biz-pitch \"ConstructHub\" --full --b2b --saas",
+          "description": "Full validation for B2B SaaS in construction"
+        },
+        {
+          "command": "/new-biz-pitch \"GreenTech Solution\" --investor",
+          "description": "Generate investor package for climate tech startup"
+        },
+        {
+          "command": "/nbp \"FoodDelivery\" --quick --b2c",
+          "description": "Quick consumer product validation using alias"
+        }
+      ],
+      "workflow": {
+        "steps": [
+          {
+            "id": "init",
+            "name": "Initialize",
+            "description": "Collect variables and run orchestrator",
+            "required": true
+          },
+          {
+            "id": "problem",
+            "name": "Problem Discovery",
+            "description": "Validate problem exists and is worth solving",
+            "gate": "70% validation required"
+          },
+          {
+            "id": "market",
+            "name": "Market Analysis",
+            "description": "Size opportunity and analyze competition",
+            "gate": "TAM > $100M or niche dominance"
+          },
+          {
+            "id": "solution",
+            "name": "Solution Definition",
+            "description": "Define MVP and create PRD",
+            "gate": "Technical feasibility confirmed"
+          },
+          {
+            "id": "business",
+            "name": "Business Model",
+            "description": "Design pricing and unit economics",
+            "gate": "LTV:CAC > 3:1"
+          },
+          {
+            "id": "gtm",
+            "name": "Go-to-Market",
+            "description": "Create acquisition strategy and materials",
+            "gate": "CAC validated"
+          },
+          {
+            "id": "brand",
+            "name": "Brand & Experience",
+            "description": "Develop brand identity and UX",
+            "optional": true
+          },
+          {
+            "id": "legal",
+            "name": "Legal & Compliance",
+            "description": "Address regulatory requirements",
+            "optional": false
+          },
+          {
+            "id": "analytics",
+            "name": "Analytics Framework",
+            "description": "Design measurement system",
+            "optional": true
+          },
+          {
+            "id": "delivery",
+            "name": "Delivery Planning",
+            "description": "Create execution roadmap",
+            "optional": false
+          },
+          {
+            "id": "launch",
+            "name": "Launch Preparation",
+            "description": "Prepare operational runbooks",
+            "optional": true
+          },
+          {
+            "id": "investor",
+            "name": "Investor Materials",
+            "description": "Create fundraising package",
+            "optional": true
+          }
+        ]
+      },
+      "outputs": [
+        "Working Backwards PR/FAQ",
+        "Customer Interview Guide",
+        "Market Analysis Report",
+        "Product Requirements Document",
+        "Technical Architecture Diagram",
+        "Pricing & Packaging Strategy",
+        "Go-to-Market Plan",
+        "Landing Page Copy",
+        "Email Sequences (6)",
+        "Sales Discovery Script",
+        "Objection Handlers (10)",
+        "Analytics Tracking Plan",
+        "Launch Runbook",
+        "Pitch Deck (10 slides)",
+        "Executive Summary",
+        "Financial Model"
+      ],
+      "requirements": {
+        "tools": ["Read", "Write", "MultiEdit", "Bash", "WebSearch"],
+        "permissions": ["file_write", "web_access"],
+        "dependencies": []
+      }
+    }
+  ],
+  "configuration": {
+    "default_output_format": "markdown",
+    "auto_create_directories": true,
+    "version_control": true,
+    "gate_strictness": "medium",
+    "evidence_quality_threshold": 3,
+    "parallel_stage_execution": false
+  }
+}
